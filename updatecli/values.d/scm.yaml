@@ -1,0 +1,9 @@
+scm:
+  commitusingapi: true
+  enabled: false
+  user: loisbot
+  email: bot@postu.la
+  owner: loispostula
+  repository: terragrunt-plan-summary
+  username: "updatecli-bot"
+  branch: main
