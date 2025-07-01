@@ -19,7 +19,7 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" # v4.2.2
       - name: "Setup updatecli"
-        uses: "updatecli/updatecli-action@4e1f121238952dc7bd9ccfe4a059d547fa4168ba" # v2
+        uses: "updatecli/updatecli-action@b2d27ae973914f05b36ac2e9fb56378fc9b62df0" # v2
       - name: "Run updatecli in dryrun"
         run: "updatecli compose diff"
         env:
