@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: DeterminateSystems/nix-installer-action@41e0dcf2158a3d6eefca89332cc236df1733e8a7 # main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@754ce5b47d6e1422d9cc910fc52acf135cb26ee5 # main
         with:
           use-flakehub: false
       - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
