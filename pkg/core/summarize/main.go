@@ -260,7 +260,7 @@ func summarizeDetailedPlan(planFiles []string, detailPlan string) error {
 			logrus.Fatal("Error rendering the table", err)
 			return err
 		}
-		logrus.Infof(tableString.String())
+		logrus.Info(tableString.String())
 
 	}
 	return nil
@@ -357,7 +357,7 @@ func summarizeAllPlans(planFiles []string, envProjectRegex string) error {
 		logrus.Fatal("Error rendering the table", err)
 		return err
 	}
-	logrus.Infof(tableString.String())
+	logrus.Info(tableString.String())
 	return nil
 }
 

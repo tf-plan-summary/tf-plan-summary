@@ -9,14 +9,14 @@ policies:
     values:
       - updatecli/values.d/scm.yaml
       - updatecli/values.d/updatecli-compose.yaml
-  # - name: Golang Version
-  #   policy: ghcr.io/updatecli/policies/golang/version:0.4.0@sha256:9b3c09a73ffbecc690f07a4a44244f51dcc1dfb0e5a292207f2543b79f08fcaa
-  #   values:
-  #     - updatecli/values.d/scm.yaml
-  # - name: Golang Module update
-  #   policy: ghcr.io/updatecli/policies/autodiscovery/golang:0.10.0@sha256:3b1a2b03b3cd8e33305ca165a8be2ca126a06be4cbdf388bf98e48a568855cdc
-  #   values:
-  #     - updatecli/values.d/scm.yaml
+  - name: Golang Version
+    policy: ghcr.io/updatecli/policies/golang/version:0.4.0@sha256:9b3c09a73ffbecc690f07a4a44244f51dcc1dfb0e5a292207f2543b79f08fcaa
+    values:
+      - updatecli/values.d/scm.yaml
+  - name: Golang Module update
+    policy: ghcr.io/updatecli/policies/autodiscovery/golang:0.10.0@sha256:3b1a2b03b3cd8e33305ca165a8be2ca126a06be4cbdf388bf98e48a568855cdc
+    values:
+      - updatecli/values.d/scm.yaml
   - name: Update golangci-lint
     policy: ghcr.io/updatecli/policies/golangci-lint/githubaction:0.5.0@sha256:0e1addae151528a2c337a306eb323332dd36a91f36b0e93891858eed7466456b
     values:
