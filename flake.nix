@@ -16,6 +16,8 @@
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (
       system: let
+        tpsVersion = "0.1.0";
+        tpsVendorHash = "sha256-TBKLoyzpO5Fh6enrVKJPfLEr4v1W7Vpm+H2INTRlYSE=";
         goVersion = "1.24";
         pkgs = (import nixpkgs) {
           inherit system;
@@ -29,6 +31,16 @@
         treefmtEval = treefmt.lib.evalModule pkgs ./treefmt.nix;
       in {
         packages = {
+          default = pkgs.buildGoModule {
+            pname = "terragrunt_plan_summary";
+            version = tpsVersion;
+            src = builtins.path {
+              path = ./.;
+              name = "source";
+            };
+            doCheck = true;
+            vendorHash = tpsVendorHash;
+          };
           devenv-up = self.devShells.${system}.default.config.procfileScript;
           devenv-test = self.devShells.${system}.default.config.test;
         };

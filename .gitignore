@@ -12,7 +12,7 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 #
 bin/
 dist/
@@ -45,3 +45,8 @@ devenv.local.nix
 
 terragrunt-plan-summary
 .pre-commit-config.yaml
+
+# Nix
+
+result
+result-*

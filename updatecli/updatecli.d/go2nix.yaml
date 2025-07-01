@@ -1,0 +1,79 @@
+name: "docs: update nix shenanigans"
+pipelineid: "nix-shenanigans"
+actions:
+  default:
+    title: "deps: update nix shenanigans"
+    kind: github/pullrequest
+    spec:
+      automerge: true
+      labels:
+        - chore
+        - skip-changelog
+    scmid: default
+scms:
+  default:
+    kind: github
+    spec:
+      branch: "{{ .scm.branch }}"
+      email: "{{ .scm.email }}"
+      owner: "{{ .scm.owner }}"
+      repository: "{{ .scm.repository }}"
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      user: "{{ .scm.user }}"
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+sources:
+  goVersion:
+    kind: golang/gomod
+    name: Get Golang version used in go.mod
+    scmid: default
+    spec:
+      kind: golang
+    transformers:
+      - findsubmatch:
+          pattern: "([0-9]*\\.[0-9]*)\\.[0-9]*"
+          captureindex: 1
+  validVendorHash:
+    kind: shell
+    name: Build derivation with currentHash
+    dependson:
+      - "condition#hashIsInvalid:and"
+    spec:
+      command: "! nix build --impure .#default 2>&1"
+      environments:
+        - name: HOME
+        - name: PATH
+    transformers:
+      - findsubmatch:
+          pattern: ".*got: *(sha256-.*)"
+          captureindex: 1
+    scmid: default
+conditions:
+  hashIsInvalid:
+    kind: shell
+    name: Build derivation with currentHash
+    disablesourceinput: true
+    spec:
+      command: "! nix build --impure .#default"
+      environments:
+        - name: HOME
+        - name: PATH
+    scmid: default
+targets:
+  nixGoVersion:
+    name: 'nix: update goVersion to {{ source "goVersion" }}'
+    kind: file
+    disablesourceinput: true
+    spec:
+      file: flake.nix
+      matchpattern: '(.*)goVersion = "(.*)";(.*)'
+      replacepattern: '${1}goVersion = "{{ source "goVersion" }}";${3}'
+      scmid: default
+  nixVendorHash:
+    name: 'nix: update vendorHash to {{ source "validVendorHash"}}'
+    kind: file
+    disablesourceinput: true
+    spec:
+      file: flake.nix
+      matchpattern: '(.*)tpsVendorHash = "(.*)";(.*)'
+      replacepattern: '${1}tpsVendorHash = "{{ source "validVendorHash" }}";${3}'
+    scmid: default
