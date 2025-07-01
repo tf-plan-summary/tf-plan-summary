@@ -21,7 +21,7 @@ jobs:
       - name: "Setup updatecli"
         uses: "updatecli/updatecli-action@b2d27ae973914f05b36ac2e9fb56378fc9b62df0" # v2
       - uses: DeterminateSystems/flake-checker-action@0af51e37404acfb298f7e2eec77470be27eb57c5 # v10
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@41e0dcf2158a3d6eefca89332cc236df1733e8a7 # main
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
