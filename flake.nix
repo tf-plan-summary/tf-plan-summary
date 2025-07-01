@@ -1,7 +1,7 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     devenv.url = "github:cachix/devenv";
     treefmt.url = "github:numtide/treefmt-nix";
   };
@@ -46,6 +46,10 @@
                 packages = with pkgs; [
                   updatecli
                   goreleaser
+                  golangci-lint
+                  revive
+                  cosign
+                  syft
                   treefmtEval.config.build.wrapper
                 ];
                 languages = {
@@ -66,13 +70,20 @@
                   flake-checker.enable = true;
                   # golang
                   gofmt.enable = true;
+                  gotest.enable = true;
                   golangci-lint.enable = true;
+                  # shell scripts
+                  shellcheck.enable = true;
+                  # JSON
+                  check-json.enable = true;
+                  # generic
+                  check-toml.enable = true;
                 };
                 enterTest = ''
-                  go mod verify
-                  goreleaser check
-                  go test -coverprofile=cover.out $(go list ./... | grep -v /cmd | grep -v /claims | grep -v /team)
-                  coverage=$(go tool cover -func=cover.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
+                  ${pkgs.go}/bin/go mod verify
+                  ${pkgs.goreleaser}/bin/goreleaser check
+                  ${pkgs.go}/bin/go test -coverprofile=cover.out $(go list ./... | grep -v /cmd | grep -v /claims | grep -v /team)
+                  coverage=$(${pkgs.go}/bin/go tool cover -func=cover.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
                   if (( $(echo "$coverage < 25" | bc -l) )); then
                     echo "Test coverage is below 25s%: $coverage%"
                     exit 1
@@ -91,15 +102,22 @@
                   };
                   "build.all" = {
                     exec = ''
-                      ${pkgs.goreleaser}/bin/goreleaser build --clean --skip=publish,sign
+                      ${pkgs.goreleaser}/bin/goreleaser --clean --skip=publish,sign
                     '';
-                    description = "Snapshot build";
+                    description = "Release build";
+                  };
+                  "release" = {
+                    exec = ''
+                      ${pkgs.goreleaser}/bin/goreleaser release --clean --timeout=2h
+                    '';
+                    description = "Release build";
                   };
                   lint = {
                     exec = ''
                       ${pkgs.golangci-lint}/bin/golangci-lint run
+                      ${pkgs.revive}/bin/revive
                     '';
-                    description = "Snapshot build";
+                    description = "Linting";
                   };
                 };
 
