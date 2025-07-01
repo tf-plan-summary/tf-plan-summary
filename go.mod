@@ -8,7 +8,7 @@ require (
 	github.com/muesli/roff v0.1.0
 	github.com/olekukonko/tablewriter v1.0.7
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/cobra v1.8.1
+	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.7.0
 )
 
