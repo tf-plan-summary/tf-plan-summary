@@ -1,0 +1,73 @@
+name: "docs: bump terragrunt-plan-summary version"
+pipelineid: "terragrunt-plan-summary"
+actions:
+  default:
+    title: 'deps: bump terragrunt-plan-summary version to {{ source "latestVersion" }}'
+    kind: github/pullrequest
+    spec:
+      automerge: true
+      labels:
+        - chore
+        - skip-changelog
+    scmid: default
+scms:
+  default:
+    kind: github
+    spec:
+      branch: "{{ .scm.branch }}"
+      email: "{{ .scm.email }}"
+      owner: "{{ .scm.owner }}"
+      repository: "{{ .scm.repository }}"
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      user: "{{ .scm.user }}"
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+sources:
+  latestVersion:
+    name: Get latest updatecli release
+    kind: githubrelease
+    spec:
+      owner: loispostula
+      repository: terragrunt-plan-summary
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: semver
+  latestVersionTrimmed:
+    kind: githubrelease
+    spec:
+      owner: loispostula
+      repository: terragrunt-plan-summary
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: semver
+    transformers:
+      - trimprefix: v
+targets:
+  cosign-checksums-txt-sig:
+    name: 'docs: update checksums.txt.sig url with terragrunt-plan-summary version to {{ source "latestVersion" }}'
+    kind: file
+    spec:
+      file: README.md
+      matchpattern: "(.*)https://github.com/loispostula/terragrunt-plan-summary/releases/download/(.*)/checksums.txt.sig(.*)"
+      replacepattern: '${1}https://github.com/loispostula/terragrunt-plan-summary/releases/download/{{ source "latestVersion" }}/checksums.txt.sig${3}'
+    scmid: default
+    sourceid: latestVersion
+  cosign-checksums-txt-pem:
+    name: 'docs: update checksums.txt.pem url with terragrunt-plan-summary version to {{ source "latestVersion" }}'
+    kind: file
+    spec:
+      file: README.md
+      matchpattern: "(.*)https://github.com/loispostula/terragrunt-plan-summary/releases/download/(.*)/checksums.txt.pem(.*)"
+      replacepattern: '${1}https://github.com/loispostula/terragrunt-plan-summary/releases/download/{{ source "latestVersion" }}/checksums.txt.pem${3}'
+    scmid: default
+    sourceid: latestVersion
+  flake_package_version:
+    name: 'docs: update package.nix package version with terragrunt-plan-summary versoin to {{ source "latestVersion"}}'
+    kind: file
+    spec:
+      file: package.nix
+      matchpattern: '(.*)version = "(.*)";(.*)'
+      replacepattern: '${1}version = "{{ source "latestVersionTrimmed" }}";${3}'
+    scmid: default
+    sourceid: latestVersion
