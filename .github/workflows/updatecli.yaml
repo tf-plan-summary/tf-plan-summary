@@ -20,7 +20,7 @@ jobs:
         uses: "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" # v4.2.2
       - name: "Setup updatecli"
         uses: "updatecli/updatecli-action@b2d27ae973914f05b36ac2e9fb56378fc9b62df0" # v2
-      - uses: DeterminateSystems/flake-checker-action@v4
+      - uses: DeterminateSystems/flake-checker-action@0af51e37404acfb298f7e2eec77470be27eb57c5 # v10
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
