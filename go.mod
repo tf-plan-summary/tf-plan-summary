@@ -9,7 +9,7 @@ require (
 	github.com/olekukonko/tablewriter v1.0.7
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.9.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
