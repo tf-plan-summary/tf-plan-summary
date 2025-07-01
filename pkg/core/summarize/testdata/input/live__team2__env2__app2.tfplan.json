@@ -1,0 +1,16 @@
+{
+    "resource_changes": [
+        {
+            "address": "aws_dynamodb_table.app2_table",
+            "change": {
+                "actions": ["delete"]
+            }
+        },
+        {
+            "address": "aws_iam_role.app2_role",
+            "change": {
+                "actions": ["delete", "create"]
+            }
+        }
+    ]
+}
