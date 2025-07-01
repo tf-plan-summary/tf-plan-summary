@@ -6,7 +6,7 @@ archives:
       - goos: windows
         formats: ["zip"]
     files:
-      - README.adoc
+      - README.md
       - LICENSE
       - completions/*
       - manpages/*
@@ -37,78 +37,16 @@ changelog:
   ## Delegate Changelog to release-drafter
   disable: true
 checksum:
-  name_template: 'checksums.txt'
-dockers:
-  - image_templates:
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-    dockerfile: Dockerfile
-    use: buildx
-    build_flag_templates:
-      - "--pull"
-      - "--no-cache"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.name={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
-      - "--platform=linux/amd64"
-    goos: linux
-    goarch: amd64
-    extra_files:
-      - Makefile
-  - image_templates:
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
-    dockerfile: Dockerfile
-    use: buildx
-    build_flag_templates:
-      - "--pull"
-      - "--no-cache"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.name={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
-      - "--platform=linux/arm64"
-    goos: linux
-    goarch: arm64
-    extra_files:
-      - Makefile
-docker_signs:
-  - cmd: cosign
-    artifacts: manifests
-    output: true
-    args:
-      - 'sign'
-      - '--yes'
-      - '${artifact}@${digest}'
-docker_manifests:
-  - name_template: 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}'
-    image_templates:
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
-  - name_template: 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}'
-    image_templates:
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
-  - name_template: 'terragrunt-plan-summary/terragrunt-plan-summary:latest'
-    image_templates:
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-      - 'terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
-  - name_template: 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:latest'
-    image_templates:
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-amd64'
-      - 'ghcr.io/terragrunt-plan-summary/terragrunt-plan-summary:{{ .Tag }}-arm64'
+  name_template: "checksums.txt"
 env:
   - GO111MODULE=on
   - CGO_ENABLED=0
 nfpms:
-  - file_name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-    homepage: 'https://www.terragrunt-plan-summary.io'
-    description: 'Terragrunt-Plan-Summary is a declarative dependency management command line tool.'
-    maintainer: 'Olivier Vernin <olivier@vernin.me>'
-    license: 'Apache-2.0'
+  - file_name_template: "{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    homepage: "https://lois.postu.la/terragrunt-plan-summary"
+    description: "Terragrunt-Plan-Summary is a tool to summarize terragrunt parallel terragrunt plans."
+    maintainer: "Loïs Postula <lois@postu.la>"
+    license: "Apache-2.0"
     vendor: Terragrunt-Plan-Summary
     section: utils
     formats:
@@ -144,13 +82,13 @@ sboms:
   - artifacts: archive
 signs:
   - cmd: cosign
-    certificate: '${artifact}.pem'
+    certificate: "${artifact}.pem"
     signature: "${artifact}.sig"
     output: true
     artifacts: checksum
     args:
       - sign-blob
-      - '--yes'
-      - '--output-certificate=${certificate}'
-      - '--output-signature=${signature}'
-      - '${artifact}'
+      - "--yes"
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
