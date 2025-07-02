@@ -19,3 +19,5 @@
   - [FAQ](help/faq.md)
 
 -----------
+
+- [Changelog](changelogs/README.md)

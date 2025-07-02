@@ -1,11 +1,12 @@
-name: "docs: update changelog summary"
-pipelineid: "changelog"
+name: "docs: synchronize release note"
+pipelineid: releasepost
 actions:
   default:
-    title: "docs: update changelog summary"
+    title: "docs: synchronize release note"
     kind: github/pullrequest
     spec:
       automerge: true
+      mergemethod: rebase
       labels:
         - chore
         - skip-changelog
@@ -22,10 +23,27 @@ scms:
       user: "{{ .scm.user }}"
       username: '{{ requiredEnv "GITHUB_ACTOR" }}'
 targets:
+  releasepost:
+    name: synchronize release notes
+    kind: shell
+    spec:
+      changedif:
+        kind: exitcode
+        spec:
+          failure: 1
+          success: 0
+          warning: 2
+      command: releasepost --detailed-exit-code --dry-run="$DRY_RUN" --config .releasepost.yaml
+      environments:
+        - name: GITHUB_TOKEN
+        - name: RELEASEPOST_GITHUB_TOKEN
+        - name: PATH
+    scmid: default
   summary:
     kind: shell
     disablesourceinput: true
-    scmid: default
+    dependson:
+      - target#releasepost
     spec:
       command: |
         cat docs/src/_SUMMARY.md docs/src/changelogs/_SUMMARY.md > docs/src/SUMMARY.md
