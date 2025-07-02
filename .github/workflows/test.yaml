@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: DeterminateSystems/flake-checker-action@0af51e37404acfb298f7e2eec77470be27eb57c5 # v10
-      - uses: DeterminateSystems/nix-installer-action@14e34cbe592754463e5b3bef5acfffb4783904b8 # push-yyvrlpyxqswn
+      - uses: DeterminateSystems/nix-installer-action@cac065195588492cf844f42e69480ba129d8ee01 # push-yyvrlpyxqswn
       - uses: DeterminateSystems/magic-nix-cache-action@754ce5b47d6e1422d9cc910fc52acf135cb26ee5 # main
         with:
           use-flakehub: false
