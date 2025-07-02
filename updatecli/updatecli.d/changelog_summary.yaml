@@ -1,0 +1,36 @@
+name: "docs: update changelog summary"
+pipelineid: "changelog"
+actions:
+  default:
+    title: "docs: update changelog summary"
+    kind: github/pullrequest
+    spec:
+      automerge: true
+      labels:
+        - chore
+        - skip-changelog
+    scmid: default
+scms:
+  default:
+    kind: github
+    spec:
+      branch: "{{ .scm.branch }}"
+      email: "{{ .scm.email }}"
+      owner: "{{ .scm.owner }}"
+      repository: "{{ .scm.repository }}"
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      user: "{{ .scm.user }}"
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+targets:
+  summary:
+    kind: shell
+    disablesourceinput: true
+    scmid: default
+    spec:
+      command: |
+        cat docs/src/_SUMMARY.md docs/src/changelogs/_SUMMARY.md > docs/src/SUMMARY.md
+      changedif:
+        kind: file/checksum
+        spec:
+          files:
+            - docs/src/SUMMARY.md

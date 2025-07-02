@@ -62,6 +62,7 @@
                   revive
                   cosign
                   syft
+                  mdbook
                   treefmtEval.config.build.wrapper
                 ];
                 languages = {
