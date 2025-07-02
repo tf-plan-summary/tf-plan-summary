@@ -37,8 +37,7 @@ changelogs:
           *Information retrieved from [here]({{.Changelog.URL}})*
           {{ end}}
         indexfilename: "_SUMMARY"
-        indexfiletemplate: |
-
+        indexfiletemplate: |2
           {{ range $pos, $release := .Changelogs }}
             -  [{{ $release.Name}}](changelogs/changelogs/{{ $release.Tag }}.md) {{ if (eq $pos 0) }}(latest){{ end}}
           {{ end }}

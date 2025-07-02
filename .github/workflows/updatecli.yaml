@@ -8,6 +8,9 @@ on:
     # Run every day
     - cron: "0 0 * * *"
 permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   updatecli:
     runs-on: ubuntu-latest
