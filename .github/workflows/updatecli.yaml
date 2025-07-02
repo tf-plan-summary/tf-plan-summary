@@ -24,7 +24,7 @@ jobs:
       - name: "Setup Releasepost"
         uses: "updatecli/releasepost-action@864390bddae97db06ee881ab4a08d159b4464643" # v0.5.0
       - uses: DeterminateSystems/flake-checker-action@0af51e37404acfb298f7e2eec77470be27eb57c5 # v10
-      - uses: DeterminateSystems/nix-installer-action@14e34cbe592754463e5b3bef5acfffb4783904b8 # push-yyvrlpyxqswn
+      - uses: DeterminateSystems/nix-installer-action@cac065195588492cf844f42e69480ba129d8ee01 # push-yyvrlpyxqswn
       - uses: DeterminateSystems/magic-nix-cache-action@754ce5b47d6e1422d9cc910fc52acf135cb26ee5 # main
         with:
           use-flakehub: false
