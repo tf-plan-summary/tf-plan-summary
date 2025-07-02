@@ -135,7 +135,7 @@
 
                 enterShell = ''
                   [ ! -f .env ] || export $(grep -v '^#' .env | xargs)
-                  echo 👋 Welcome to terragrunt-plan-summary Development Environment. 🚀
+                  echo 👋 Welcome to tf-plan-summary Development Environment. 🚀
                   echo
                   echo If you see this message, it means your are inside the Nix shell ❄️.
                   echo
@@ -147,7 +147,7 @@
                   EOF
                   echo
                   echo Repository:
-                  echo  - https://github.com/loispostula/terragrunt-plan-summary
+                  echo  - https://github.com/tf-plan-summary/tf-plan-summary
                   echo ------------------------------------------------------------------
                   echo
                 '';

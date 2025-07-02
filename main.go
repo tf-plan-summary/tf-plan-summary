@@ -1,8 +1,8 @@
-// Package main is the entry point for the terragrunt-plan-summary CLI.
+// Package main is the entry point for the tf-plan-summary CLI.
 package main
 
 import (
-	"github.com/loispostula/terragrunt-plan-summary/cmd"
+	"github.com/tf-plan-summary/tf-plan-summary/cmd"
 )
 
 func main() {

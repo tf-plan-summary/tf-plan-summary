@@ -1,4 +1,4 @@
-module github.com/loispostula/terragrunt-plan-summary
+module github.com/tf-plan-summary/tf-plan-summary
 
 go 1.24.4
 

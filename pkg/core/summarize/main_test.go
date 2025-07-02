@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/loispostula/terragrunt-plan-summary/pkg/core/log"
+	"github.com/tf-plan-summary/tf-plan-summary/pkg/core/log"
 )
 
 func TestFormatCounterAndColor(t *testing.T) {

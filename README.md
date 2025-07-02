@@ -17,16 +17,16 @@ Supports both **detailed** per-project views and **summary overviews** across mu
 ## Installation
 
 
-terragrunt-plan-summary is a Go binary available for Linux, MacOS and Windows from the link:https://github.com/loispostula/terragrunt-plan-summary/releases[release page].
+tf-plan-summary is a Go binary available for Linux, MacOS and Windows from the link:https://github.com/tf-plan-summary/tf-plan-summary/releases[release page].
 
 **Verify File Checksum Signature**
 
-Instead of signing all release assets, terragrunt-plan-summary signs the checksums file containing the different release assets checksum.
-You can download/copy the three files 'checksums.txt.pem', 'checksums.txt.sig', 'checksums.txt' from the latest https://github.com/loispostula/terragrunt-plan-summary/releases/latest[release].
+Instead of signing all release assets, tf-plan-summary signs the checksums file containing the different release assets checksum.
+You can download/copy the three files 'checksums.txt.pem', 'checksums.txt.sig', 'checksums.txt' from the latest https://github.com/tf-plan-summary/tf-plan-summary/releases/latest[release].
 Once you have the three files locally, you can execute the following command
 
 ```
-cosign verify-blob --certificate-identity-regexp "https://github.com/loispostula/terragrunt-plan-summary" --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' --cert https://github.com/loispostula/terragrunt-plan-summary/releases/download/v0.1.0/checksums.txt.pem --signature https://github.com/loispostula/terragrunt-plan-summary/releases/download/v0.1.0/checksums.txt.sig checksums.txt
+cosign verify-blob --certificate-identity-regexp "https://github.com/tf-plan-summary/tf-plan-summary" --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' --cert https://github.com/tf-plan-summary/tf-plan-summary/releases/download/v0.1.0/checksums.txt.pem --signature https://github.com/tf-plan-summary/tf-plan-summary/releases/download/v0.1.0/checksums.txt.sig checksums.txt
 ```
 
 A successful output looks like

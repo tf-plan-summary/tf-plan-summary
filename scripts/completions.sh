@@ -3,5 +3,5 @@ set -e
 rm -rf completions
 mkdir completions
 for sh in bash zsh fish; do
-  go run main.go completion "$sh" >"completions/terragrunt-plan-summary.$sh"
+  go run main.go completion "$sh" >"completions/tf-plan-summary.$sh"
 done

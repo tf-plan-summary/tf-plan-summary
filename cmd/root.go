@@ -6,8 +6,8 @@ import (
 	"github.com/sirupsen/logrus"
 
 	// "github.com/updatecli/updatecli/pkg/core/cmdoptions"
-	"github.com/loispostula/terragrunt-plan-summary/pkg/core/log"
-	"github.com/loispostula/terragrunt-plan-summary/pkg/core/result"
+	"github.com/tf-plan-summary/tf-plan-summary/pkg/core/log"
+	"github.com/tf-plan-summary/tf-plan-summary/pkg/core/result"
 
 	"github.com/spf13/cobra"
 )
@@ -18,10 +18,10 @@ var (
 	envProjectRegex string
 
 	rootCmd = &cobra.Command{
-		Use:   "terragrunt-plan-summary",
-		Short: "terragrunt-plan-summary is a tool to generate summaries from a terragrunt run-* command",
+		Use:   "tf-plan-summary",
+		Short: "tf-plan-summary is a tool to generate summaries from a terragrunt run-* command",
 		Long: `
-terragrunt-plan-summary is a tool to generate summaries from a terragrunt run-* command`,
+tf-plan-summary is a tool to generate summaries from a terragrunt run-* command`,
 	}
 )
 

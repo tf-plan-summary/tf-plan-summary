@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/loispostula/terragrunt-plan-summary/pkg/core/summarize"
 	"github.com/spf13/cobra"
+	"github.com/tf-plan-summary/tf-plan-summary/pkg/core/summarize"
 )
 
 var (

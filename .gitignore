@@ -43,7 +43,7 @@ devenv.local.nix
 .direnv
 .devenv
 
-terragrunt-plan-summary
+tf-plan-summary
 .pre-commit-config.yaml
 
 # Nix

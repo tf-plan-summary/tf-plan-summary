@@ -1,10 +1,10 @@
 automerge: true
 scm:
   commitusingapi: true
-  enabled: false
-  user: loisbot
-  email: bot@postu.la
-  owner: loispostula
-  repository: terragrunt-plan-summary
-  username: "lois-bot"
+  enabled: true
+  user: cibot
+  email: bot@tf-plan-summary.io
+  owner: tf-plan-summary
+  repository: tf-plan-summary
+  username: "ci-bot"
   branch: main

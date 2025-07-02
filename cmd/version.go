@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/loispostula/terragrunt-plan-summary/pkg/core/version"
+	"github.com/tf-plan-summary/tf-plan-summary/pkg/core/version"
 )
 
 var (

@@ -17,14 +17,14 @@ before:
     - ./scripts/completions.sh
     - ./scripts/manpages.sh
 builds:
-  - id: terragrunt-plan-summary
+  - id: tf-plan-summary
     main: ./main.go
-    binary: terragrunt-plan-summary
+    binary: tf-plan-summary
     ldflags:
       - -w -s
-      - -X "github.com/loispostula/terragrunt-plan-summary/pkg/core/version.BuildTime={{.Date}}"
-      - -X "github.com/loispostula/terragrunt-plan-summary/pkg/core/version.GoVersion={{.Env.GOVERSION}}"
-      - -X "github.com/loispostula/terragrunt-plan-summary/pkg/core/version.Version={{ .Version }}"
+      - -X "github.com/tf-plan-summary/tf-plan-summary/pkg/core/version.BuildTime={{.Date}}"
+      - -X "github.com/tf-plan-summary/tf-plan-summary/pkg/core/version.GoVersion={{.Env.GOVERSION}}"
+      - -X "github.com/tf-plan-summary/tf-plan-summary/pkg/core/version.Version={{ .Version }}"
     goos:
       - linux
       - darwin
@@ -43,7 +43,7 @@ env:
   - CGO_ENABLED=0
 nfpms:
   - file_name_template: "{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
-    homepage: "https://lois.postu.la/terragrunt-plan-summary"
+    homepage: "https://lois.postu.la/tf-plan-summary"
     description: "Terragrunt-Plan-Summary is a tool to summarize terragrunt parallel terragrunt plans."
     maintainer: "Loïs Postula <lois@postu.la>"
     license: "Apache-2.0"
@@ -56,24 +56,24 @@ nfpms:
     dependencies:
       - ca-certificates
     contents:
-      - src: ./completions/terragrunt-plan-summary.bash
-        dst: /usr/share/bash-completion/completions/terragrunt-plan-summary
+      - src: ./completions/tf-plan-summary.bash
+        dst: /usr/share/bash-completion/completions/tf-plan-summary
         file_info:
           mode: 0644
-      - src: ./completions/terragrunt-plan-summary.fish
-        dst: /usr/share/fish/vendor_completions.d/terragrunt-plan-summary.fish
+      - src: ./completions/tf-plan-summary.fish
+        dst: /usr/share/fish/vendor_completions.d/tf-plan-summary.fish
         file_info:
           mode: 0644
-      - src: ./completions/terragrunt-plan-summary.zsh
-        dst: /usr/share/zsh/vendor-completions/_terragrunt-plan-summary
+      - src: ./completions/tf-plan-summary.zsh
+        dst: /usr/share/zsh/vendor-completions/_tf-plan-summary
         file_info:
           mode: 0644
-      - src: ./manpages/terragrunt-plan-summary.1.gz
-        dst: /usr/share/man/man1/terragrunt-plan-summary.1.gz
+      - src: ./manpages/tf-plan-summary.1.gz
+        dst: /usr/share/man/man1/tf-plan-summary.1.gz
         file_info:
           mode: 0644
       - src: ./LICENSE
-        dst: /usr/share/doc/terragrunt-plan-summary/copyright
+        dst: /usr/share/doc/tf-plan-summary/copyright
         file_info:
           mode: 0644
 snapshot:
