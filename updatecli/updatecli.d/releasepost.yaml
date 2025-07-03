@@ -41,6 +41,7 @@ targets:
     scmid: default
   summary:
     kind: shell
+    scmid: default
     disablesourceinput: true
     dependson:
       - target#releasepost
