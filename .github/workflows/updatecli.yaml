@@ -23,7 +23,7 @@ jobs:
         uses: "updatecli/updatecli-action@b2d27ae973914f05b36ac2e9fb56378fc9b62df0" # v2
       - name: "Setup Releasepost"
         uses: "updatecli/releasepost-action@864390bddae97db06ee881ab4a08d159b4464643" # v0.5.0
-      - uses: DeterminateSystems/flake-checker-action@0af51e37404acfb298f7e2eec77470be27eb57c5 # v10
+      - uses: DeterminateSystems/flake-checker-action@f6b84c9884c22039e1fc23dadb4a0d0add56c197 # v11
       - uses: DeterminateSystems/nix-installer-action@9a614930230081ace91d36fb553b638a7dfc7362 # push-yyvrlpyxqswn
       - uses: DeterminateSystems/magic-nix-cache-action@754ce5b47d6e1422d9cc910fc52acf135cb26ee5 # main
         with:
