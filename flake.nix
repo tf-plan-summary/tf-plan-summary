@@ -17,7 +17,7 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         tpsVersion = "0.1.0";
-        tpsVendorHash = "";
+        tpsVendorHash = "sha256-C+GaXlyMCCjdALTMjS4HsBind/qqqwQNlgOeEkJmeu8=";
         goVersion = "1.24";
         pkgs = (import nixpkgs) {
           inherit system;
