@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - uses: DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6 # v12
       - uses: DeterminateSystems/nix-installer-action@9a614930230081ace91d36fb553b638a7dfc7362 # push-yyvrlpyxqswn
-      - uses: DeterminateSystems/magic-nix-cache-action@7f4e021881570cb0d5524c444d798697dede5a87 # main
+      - uses: DeterminateSystems/magic-nix-cache-action@1177eb6cb1c20a684e4ff3de4117fa5bbb556073 # main
         with:
           use-flakehub: false
       - name: Build the devenv shell and run any pre-commit hooks
