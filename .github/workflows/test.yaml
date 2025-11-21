@@ -16,7 +16,7 @@ jobs:
           - ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - uses: DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6 # v12
       - uses: DeterminateSystems/nix-installer-action@9a614930230081ace91d36fb553b638a7dfc7362 # push-yyvrlpyxqswn
       - uses: DeterminateSystems/magic-nix-cache-action@c6a5746789488c8753af0d61fc6b5d79a80391f3 # main
