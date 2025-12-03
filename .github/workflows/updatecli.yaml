@@ -25,7 +25,7 @@ jobs:
         uses: "updatecli/releasepost-action@864390bddae97db06ee881ab4a08d159b4464643" # v0.5.0
       - uses: DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6 # v12
       - uses: DeterminateSystems/nix-installer-action@9a614930230081ace91d36fb553b638a7dfc7362 # push-yyvrlpyxqswn
-      - uses: DeterminateSystems/magic-nix-cache-action@858d3dbce24a62050a85f74926b477df79064e4c # main
+      - uses: DeterminateSystems/magic-nix-cache-action@b8276522d77f21bf19d3574e5bc99186a6c7aa6c # main
         with:
           use-flakehub: false
       - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
