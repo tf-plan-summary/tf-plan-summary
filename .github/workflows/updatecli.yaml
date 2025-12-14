@@ -20,7 +20,7 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8" # v6.0.1
       - name: "Setup updatecli"
-        uses: "updatecli/updatecli-action@9372b1fa309308586e0459901709a00133ee2b8b" # v2
+        uses: "updatecli/updatecli-action@a93efa6052d12f3d77728350fe500c0ed74c169c" # v2
       - name: "Setup Releasepost"
         uses: "updatecli/releasepost-action@864390bddae97db06ee881ab4a08d159b4464643" # v0.5.0
       - uses: DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6 # v12
