@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: DeterminateSystems/nix-installer-action@9a614930230081ace91d36fb553b638a7dfc7362 # push-yyvrlpyxqswn
-      - uses: DeterminateSystems/magic-nix-cache-action@9743600270bc414d1b587fd338427e839196b6d4 # RossComputerGuy/fix-rand-port
+      - uses: DeterminateSystems/magic-nix-cache-action@69d6db2bbe79a895609f8990f28e80fd8451ef1c # push-rwnulvnmkqxq
         with:
           use-flakehub: false
       - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
